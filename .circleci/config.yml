@@ -4,6 +4,15 @@
 #
 version: 2
 jobs:
+  test:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    
+    steps:
+      - checkout
+      - run: gradle dependencies
+      - run: gradle test
+    
   build:
     docker:
       # specify the version you desire here
@@ -42,4 +51,11 @@ jobs:
       - run: gradle test
       
       #generate jar
-      - jar: gradle jar
+      - run: gradle jar
+
+workflows:
+  version: 2
+  test_and_build:
+    jobs:
+      - test
+      - build
