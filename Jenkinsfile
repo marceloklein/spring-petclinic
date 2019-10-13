@@ -13,6 +13,7 @@ pipeline {
             steps {
                 echo 'Testing..'
                 sh './gradlew test'
+                sh './gradlew check'
             }
         }
         stage('Deploy') {
@@ -23,6 +24,7 @@ pipeline {
     }
     post {
         always {
+            archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
             junit 'build/reports/**/*.xml'
         }
     }
