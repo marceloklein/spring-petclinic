@@ -11,15 +11,15 @@ plugins {
 repositories {
     mavenLocal()
     maven {
-        url = 'https://repo.spring.io/snapshot'
+        url = uri('https://repo.spring.io/snapshot')
     }
 
     maven {
-        url = 'https://repo.spring.io/milestone'
+        url = uri('https://repo.spring.io/milestone')
     }
 
     maven {
-        url = 'https://repo.maven.apache.org/maven2'
+        url = uri('https://repo.maven.apache.org/maven2')
     }
 }
 
