@@ -19,7 +19,7 @@ pipeline {
 	stage('Analyze') {
 	    steps {
 		echo "Sonarqube..."
-		sh './gradlew sonarqube'
+		sh './gradlew sonarqube -Dsonar.host.url=sonarqube:9000'
 	    }
 	}
         stage('Deploy') {
