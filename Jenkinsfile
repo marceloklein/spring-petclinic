@@ -16,6 +16,12 @@ pipeline {
                 sh './gradlew check'
             }
         }
+	stage('Analyze') {
+	    steps {
+		echo "Sonarqube..."
+		sh './gradlew sonarqube'
+	    }
+	}
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
