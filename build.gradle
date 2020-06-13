@@ -6,6 +6,7 @@ plugins {
     id 'java'
     id 'maven-publish'
     id 'org.springframework.boot' version '2.1.9.RELEASE'
+    id "org.sonarqube" version "3.0"
 }
 
 repositories {
@@ -54,6 +55,17 @@ publishing {
         maven(MavenPublication) {
             from(components.java)
         }
+    }
+}
+
+sonarqube {
+    properties {
+        property "sonar.sourceEncoding", "UTF-8"
+  	property "sonar.sources", "src/main/java"
+	property "sonar.tests", "src/test/java"
+	property "sonar.projectName", "PetClinic UTN"
+	property "sonar.projectKey", "org.springframework:petclinic"
+	property "sonar.language", "java"
     }
 }
 
